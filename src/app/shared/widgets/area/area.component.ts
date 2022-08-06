@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import * as Highcharts from "highcharts";
 import HC_exporting from "highcharts/modules/exporting";
+import { GridsterConfig, GridsterItem, GridsterItemComponent, GridsterItemComponentInterface,GridType } from 'angular-gridster2';
 
 @Component({
   selector: "app-widget-area",
@@ -12,8 +13,31 @@ export class AreaComponent implements OnInit {
   @Input() data: any = [];
 
   Highcharts = Highcharts;
-
-  constructor() {}
+  chart: Highcharts.Chart | null;
+  options: GridsterConfig;
+  dashboard: Array<GridsterItem>;
+  public unitHeight: number;
+  public item1: GridsterItem;  
+  width;
+  height;
+  constructor() {
+    this.unitHeight = 0;
+    this.item1 = { x: 100, y: 100, rows: 3, cols: 10 };
+     this.options = {      
+      pushItems: true,
+      minCols: 12,
+      maxCols: 12,
+      minRows: 5,
+      fixedRowHeight: 120,      
+      gridType: GridType.VerticalFixed,
+      resizable: {
+        enabled: true
+      },
+      draggable: {
+        enabled: true
+      }
+    };
+  }
 
   ngOnInit() {
     this.chartOptions = {
@@ -61,9 +85,9 @@ export class AreaComponent implements OnInit {
     };
 
     HC_exporting(Highcharts);
-
+    
     setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
+      document.dispatchEvent(new Event("resize"));
     }, 300);
   }
 }
