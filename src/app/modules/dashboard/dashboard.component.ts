@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { DashboardService } from "../dashboard.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
-
+import { AngularDraggableDirective } from 'angular2-draggable';
+import { GridsterConfig, GridsterItem, GridsterItemComponent, GridsterItemComponentInterface,GridType } from 'angular-gridster2';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -41,13 +42,35 @@ export class DashboardComponent implements OnInit {
   bigChart = [];
   cards = [];
   pieChart = [];
-
+  options: GridsterConfig;
+  dashboard: Array<GridsterItem>;
+  public unitHeight: number;
+  public item1: GridsterItem;  
+  width;
+  height;
   displayedColumns: string[] = ["position", "name", "weight", "symbol"];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService) {
+    this.unitHeight = 0;
+    this.item1 = { x: 0, y: 0, rows: 3, cols: 10 };
+     this.options = {      
+      pushItems: true,
+      minCols: 12,
+      maxCols: 12,
+      minRows: 5,
+      fixedRowHeight: 120,      
+      gridType: GridType.VerticalFixed,
+      resizable: {
+        enabled: true
+      },
+      draggable: {
+        enabled: true
+      }
+    };
+  }
 
   ngOnInit() {
     this.bigChart = this.dashboardService.bigChart();

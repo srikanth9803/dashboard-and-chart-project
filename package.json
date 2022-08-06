@@ -24,6 +24,8 @@
     "@angular/platform-browser": "^14.0.1",
     "@angular/platform-browser-dynamic": "^14.0.1",
     "@angular/router": "^14.0.1",
+    "angular-gridster2": "^14.1.0",
+    "angular2-draggable": "^2.3.2",
     "highcharts": "^10.1.0",
     "highcharts-angular": "^3.0.0",
     "rxjs": "~7.5.5",

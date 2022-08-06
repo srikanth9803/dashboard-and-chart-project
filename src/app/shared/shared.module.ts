@@ -16,6 +16,9 @@ import { AreaComponent } from './widgets/area/area.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CardComponent } from './widgets/card/card.component';
 import { PieComponent } from './widgets/pie/pie.component';
+import { BarComponent } from './widgets/bar/bar.component'; 
+import { AngularDraggableModule } from 'angular2-draggable';
+import { GridsterModule } from "angular-gridster2";
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { PieComponent } from './widgets/pie/pie.component';
     SidebarComponent,
     AreaComponent,
     CardComponent,
-    PieComponent
+    PieComponent,
+    BarComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +41,9 @@ import { PieComponent } from './widgets/pie/pie.component';
     MatMenuModule,
     MatListModule,
     RouterModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    AngularDraggableModule,
+    GridsterModule
   ],
   exports: [
     HeaderComponent,
@@ -45,7 +51,8 @@ import { PieComponent } from './widgets/pie/pie.component';
     SidebarComponent,
     AreaComponent,
     CardComponent,
-    PieComponent
+    PieComponent,
+    BarComponent
   ]
 })
 export class SharedModule { }

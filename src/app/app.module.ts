@@ -8,6 +8,8 @@ import { DefaultModule } from './layouts/default/default.module';
 import { ArticlesComponent } from './modules/articles/articles.component';
 import { ContactsComponent } from './modules/contacts/contacts.component';
 import { LeadsComponent } from './modules/leads/leads.component';
+import { AngularDraggableModule } from 'angular2-draggable';
+import { GridsterModule } from "angular-gridster2"
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { LeadsComponent } from './modules/leads/leads.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DefaultModule
+    DefaultModule,AngularDraggableModule,GridsterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
